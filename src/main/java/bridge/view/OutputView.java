@@ -1,5 +1,7 @@
 package bridge.view;
 
+import bridge.GameStatus;
+
 import java.util.Map;
 
 /**
@@ -11,9 +13,13 @@ public class OutputView {
     private static final String READ_BRIDGE_SIZE_MESSAGE = "다리의 길이를 입력해주세요.";
     private static final String READ_MOVING_COMMAND_MESSAGE = "이동할 칸을 선택해주세요. (위: U, 아래: D)";
     private static final String READ_RETRY_OR_END_COMMAND_MESSAGE = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)";
-    private static final String FINAL_GAME_RESULT_MESSAGE = "게임 최종 결과";
+    private static final String FINAL_GAME_RESULT_MESSAGE = "최종 게임 결과";
     private static final String UP_SHAPE_KEY = "upShape";
     private static final String DOWN_SHAPE_KEY = "upShape";
+    private static final String IS_GAME_SUCCESS_MESSAGE = "게임 성공 여부 : ";
+    private static final String SUCCESS_MESSAGE = "성공";
+    private static final String FAILURE_MESSAGE = "실패";
+    private static final String TOTAL_TRY_NUMBER_MESSAGE = "총 시도한 횟수 : ";
 
     public void printGameStartMessage() {
         printMessage(GAME_START_MESSAGE);
@@ -52,14 +58,31 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(Map<String, String> currentShapes, GameStatus gameStatus, int tryNumber) {
+        printFinalGameResultMessage();
+        printMap(currentShapes);
+        printGameStatus(gameStatus);
+        printTryNumber(tryNumber);
+    }
+
+    private void printGameStatus(GameStatus gameStatus) {
+        if (gameStatus.equals(GameStatus.SUCCESS)) {
+            printMessage(IS_GAME_SUCCESS_MESSAGE + SUCCESS_MESSAGE);
+        }
+        if (gameStatus.equals(GameStatus.FAILURE)) {
+            printMessage(IS_GAME_SUCCESS_MESSAGE + FAILURE_MESSAGE);
+        }
+    }
+
+    private void printTryNumber(int tryNumber) {
+        printMessage(TOTAL_TRY_NUMBER_MESSAGE + tryNumber);
     }
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }
 
-    public void printMessage(String message) {
+    private void printMessage(String message) {
         System.out.println(message);
     }
 }
