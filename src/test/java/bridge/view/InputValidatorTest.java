@@ -35,4 +35,12 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 이동할 칸 커맨드는 U 또는 D여야합니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"R1", "Q1", "r", "q", "1"})
+    void 입력한_게임_재시도_종료_커맨드가_R_또는_Q가_아니면_예외_처리(String retryOrEndCommand) {
+        assertThatThrownBy(() -> inputValidator.validateRetryOrEndCommand(retryOrEndCommand))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 게임 재시도/종료 커맨드는 R 또는 Q여야합니다.");
+    }
 }

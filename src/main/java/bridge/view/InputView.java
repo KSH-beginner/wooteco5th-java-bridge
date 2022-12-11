@@ -24,6 +24,7 @@ public class InputView {
 
     public String readRetryOrEndCommand() {
         String retryOrEndCommand = Console.readLine();
+        inputValidator.validateRetryOrEndCommand(retryOrEndCommand);
         return retryOrEndCommand;
     }
 }
