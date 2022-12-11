@@ -18,6 +18,7 @@ public class InputView {
 
     public String readMovingCommand() {
         String movingCommand = Console.readLine();
+        inputValidator.validateMovingCommand(movingCommand);
         return movingCommand;
     }
 
