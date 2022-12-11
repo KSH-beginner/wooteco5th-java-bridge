@@ -66,4 +66,9 @@ public class PlayerBridge {
     public List<String> getCurrentDownShape() {
         return Collections.unmodifiableList(this.downShape);
     }
+
+    public void initializeShape() {
+        upShape.clear();
+        downShape.clear();
+    }
 }
