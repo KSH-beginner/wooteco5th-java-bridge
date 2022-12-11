@@ -14,7 +14,8 @@ public class InputView {
         return movingCommand;
     }
 
-    public String readGameCommand() {
-        return null;
+    public String readRetryOrEndCommand() {
+        String retryOrEndCommand = Console.readLine();
+        return retryOrEndCommand;
     }
 }
