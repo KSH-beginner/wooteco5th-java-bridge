@@ -7,6 +7,7 @@ public class OutputView {
 
     private static final String GAME_START_MESSAGE = "다리 건너기 게임을 시작합니다.";
     private static final String READ_BRIDGE_SIZE_MESSAGE = "다리의 길이를 입력해주세요.";
+    private static final String READ_MOVING_COMMAND_MESSAGE = "이동할 칸을 선택해주세요. (위: U, 아래: D)";
 
     public void printGameStartMessage() {
         printMessage(GAME_START_MESSAGE);
@@ -14,6 +15,10 @@ public class OutputView {
 
     public void printReadBridgeSizeMessage() {
         printMessage(READ_BRIDGE_SIZE_MESSAGE);
+    }
+
+    public void printReadMovingCommandMessage() {
+        printMessage(READ_MOVING_COMMAND_MESSAGE);
     }
 
     /**
