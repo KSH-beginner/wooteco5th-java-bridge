@@ -9,8 +9,9 @@ public class InputView {
         return Integer.parseInt(bridgeSize);
     }
 
-    public String readMoving() {
-        return null;
+    public String readMovingCommand() {
+        String movingCommand = Console.readLine();
+        return movingCommand;
     }
 
     public String readGameCommand() {
