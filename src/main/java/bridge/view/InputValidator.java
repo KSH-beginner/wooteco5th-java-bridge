@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidator {
 
     private static final String ERROR_PREFIX = "[ERROR] ";
-    private static final String DIGIT_REGEX = "[0-9]+";
+    private static final String DIGIT_REGEX = "[+-]?[0-9]+";
 
     public void validateBridgeSize(String bridgeSize) {
         if (isBridgeSizeNotDigit(bridgeSize)) {
