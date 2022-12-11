@@ -1,5 +1,7 @@
 package bridge.view;
 
+import java.util.Map;
+
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
  */
@@ -10,6 +12,8 @@ public class OutputView {
     private static final String READ_MOVING_COMMAND_MESSAGE = "이동할 칸을 선택해주세요. (위: U, 아래: D)";
     private static final String READ_RETRY_OR_END_COMMAND_MESSAGE = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)";
     private static final String FINAL_GAME_RESULT_MESSAGE = "게임 최종 결과";
+    private static final String UP_SHAPE_KEY = "upShape";
+    private static final String DOWN_SHAPE_KEY = "upShape";
 
     public void printGameStartMessage() {
         printMessage(GAME_START_MESSAGE);
@@ -36,7 +40,11 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap() {
+    public void printMap(Map<String, String> shapes) {
+        String upShape = shapes.get(UP_SHAPE_KEY);
+        String downShape = shapes.get(DOWN_SHAPE_KEY);
+        printMessage(upShape);
+        printMessage(downShape);
     }
 
     /**
@@ -47,8 +55,8 @@ public class OutputView {
     public void printResult() {
     }
 
-    public void printErrorMessage(String errorMesage) {
-        System.out.println(errorMesage);
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
     }
 
     public void printMessage(String message) {
