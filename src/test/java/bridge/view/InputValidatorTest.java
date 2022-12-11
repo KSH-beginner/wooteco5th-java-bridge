@@ -19,4 +19,12 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 다리 길이는 숫자여야합니다.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "1", "21", "100"})
+    void 입력한_다리_길이가_3_이상_20_이하가_아니면_예외_처리(String bridgeSize) {
+        assertThatThrownBy(() -> inputValidator.validateBridgeSize(bridgeSize))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 다리 길이는 3 이상 20 이하여야합니다.");
+    }
 }
