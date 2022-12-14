@@ -24,12 +24,12 @@ public class BridgeMaker {
      * @return 입력받은 길이에 해당하는 다리 모양. 위 칸이면 "U", 아래 칸이면 "D"로 표현해야 한다.
      */
     public List<String> makeBridge(int size) {
-        List<String> generatedMovableShape = new ArrayList<>();
+        List<String> generatedMovableShapes = new ArrayList<>();
         for (int generateBridgeIndex = 0; generateBridgeIndex < size; generateBridgeIndex++) {
             String bridgeShape = convertNumberToShape(bridgeNumberGenerator.generate());
-            generatedMovableShape.add(bridgeShape);
+            generatedMovableShapes.add(bridgeShape);
         }
-        return generatedMovableShape;
+        return generatedMovableShapes;
     }
 
     private String convertNumberToShape(int number) {

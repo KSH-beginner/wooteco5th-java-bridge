@@ -15,7 +15,7 @@ public class OutputView {
     private static final String READ_RETRY_OR_END_COMMAND_MESSAGE = "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)";
     private static final String FINAL_GAME_RESULT_MESSAGE = "최종 게임 결과";
     private static final String UP_SHAPE_KEY = "upShape";
-    private static final String DOWN_SHAPE_KEY = "upShape";
+    private static final String DOWN_SHAPE_KEY = "downShape";
     private static final String IS_GAME_SUCCESS_MESSAGE = "게임 성공 여부 : ";
     private static final String SUCCESS_MESSAGE = "성공";
     private static final String FAILURE_MESSAGE = "실패";

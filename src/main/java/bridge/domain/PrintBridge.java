@@ -1,5 +1,6 @@
 package bridge.domain;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,8 @@ public class PrintBridge {
 
     private static final String UP_SHAPE_KEY = "upShape";
     private static final String DOWN_SHAPE_KEY = "downShape";
-    private static final String REPLACE_TARGET = ",";
-    private static final String REPLACEMENT = " | ";
+    private static final String PRINT_MESSAGE_FORMAT = "[ {0} ]";
+    private static final String PRINT_MESSAGE_DELIMITER = " | ";
 
     private final Map<String, String> shapes = new HashMap<>();
 
@@ -19,7 +20,8 @@ public class PrintBridge {
     }
 
     private String convertForPrint(List<String> shape) {
-        return shape.toString().replace(REPLACE_TARGET, REPLACEMENT);
+        String joinedShape = String.join(PRINT_MESSAGE_DELIMITER, shape);
+        return MessageFormat.format(PRINT_MESSAGE_FORMAT, joinedShape);
     }
 
     public Map<String, String> getShapes() {
