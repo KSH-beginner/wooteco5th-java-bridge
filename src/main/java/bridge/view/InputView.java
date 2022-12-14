@@ -7,11 +7,18 @@ import camp.nextstep.edu.missionutils.Console;
  */
 public class InputView {
 
+    private InputValidator inputValidator;
+
+    public InputView() {
+        inputValidator = new InputValidator();
+    }
+
     /**
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
         String bridgeSize = Console.readLine();
+        inputValidator.validateBridgeSize(bridgeSize);
         return Integer.parseInt(bridgeSize);
     }
 
