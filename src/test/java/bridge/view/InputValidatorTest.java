@@ -30,4 +30,13 @@ class InputValidatorTest {
                 .hasMessage(ErrorConstants.ERROR_PREFIX + "다리 길이는 3이상 20이하여야합니다.");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "u", "d", "UU", "DD", "A"})
+    void 이동할_칸이_U나_D가_아니면_예외_처리(String moving) {
+        InputValidator inputValidator = new InputValidator();
+
+        assertThatThrownBy(() -> inputValidator.validateMoving(moving))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorConstants.ERROR_PREFIX + "이동할 칸은 U 또는 D여야합니다.");
+    }
 }
