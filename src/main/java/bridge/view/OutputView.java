@@ -6,9 +6,15 @@ package bridge.view;
 public class OutputView {
 
     private static final String BRIDGE_GAME_START_MESSAGE = "다리 건너기 게임을 시작합니다.";
+    private static final String READ_BRIDGE_SIZE_MESSAGE = "다리의 길이를 입력해주세요.";
 
     public void printBridgeGameStartMessage() {
         printMessage(BRIDGE_GAME_START_MESSAGE);
+    }
+
+    public void printReadBridgeSizeMessage() {
+        printBlankLine();
+        printMessage(READ_BRIDGE_SIZE_MESSAGE);
     }
 
     /**
@@ -25,6 +31,10 @@ public class OutputView {
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void printResult() {
+    }
+
+    private void printBlankLine() {
+        System.out.println();
     }
 
     private void printMessage(String message) {
