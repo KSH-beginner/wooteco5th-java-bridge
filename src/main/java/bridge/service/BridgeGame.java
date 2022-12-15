@@ -2,6 +2,7 @@ package bridge.service;
 
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.GameStatus;
 import bridge.model.GeneratedBridge;
 import bridge.model.PlayerBridge;
 
@@ -45,6 +46,17 @@ public class BridgeGame {
         if (!generatedBridge.canMove(moveIndex, moving)) {
             playerBridge.addFailureShape(moving);
         }
+    }
+
+    public GameStatus judgeGameStatus() {
+        int currentPlayerBridgeSize = moveIndex;
+        if (generatedBridge.isSameSize(currentPlayerBridgeSize)) {
+            return GameStatus.SUCCESS;
+        }
+        if (!generatedBridge.isSameSize(currentPlayerBridgeSize)) {
+            return GameStatus.FAILURE;
+        }
+        return GameStatus.PLAY;
     }
 
     /**

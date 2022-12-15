@@ -14,4 +14,8 @@ public class GeneratedBridge {
         String movableShape = shapes.get(moveIndex);
         return movableShape.equals(playerMoveShape);
     }
+
+    public boolean isSameSize(int currentPlayerBridgeSize) {
+        return shapes.size() == currentPlayerBridgeSize;
+    }
 }
