@@ -3,6 +3,7 @@ package bridge.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,10 @@ class PrintBridgeTest {
         PrintBridge printBridge = new PrintBridge();
         List<String> playerBridgeUpShape = List.of("O", " ", "X");
         List<String> playerBridgeDownShape = List.of(" ", "O", " ");
-        Map<String, String> printShapeMap = printBridge.generate(playerBridgeUpShape, playerBridgeDownShape);
+        Map<String, List<String>> currentPlayerBridgeShape = new HashMap<>();
+        currentPlayerBridgeShape.put("upShape", playerBridgeUpShape);
+        currentPlayerBridgeShape.put("downShape", playerBridgeDownShape);
+        Map<String, String> printShapeMap = printBridge.generate(currentPlayerBridgeShape);
 
         assertThat(printShapeMap.get("upShape")).isEqualTo("[ O |   | X ]");
         assertThat(printShapeMap.get("downShape")).isEqualTo("[   | O |   ]");

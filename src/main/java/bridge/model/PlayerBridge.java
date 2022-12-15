@@ -43,4 +43,9 @@ public class PlayerBridge {
         currentShapeMap.put(DOWN_SHAPE_KEY, downShape);
         return Collections.unmodifiableMap(currentShapeMap);
     }
+
+    public void initializeShape() {
+        upShape.clear();
+        downShape.clear();
+    }
 }

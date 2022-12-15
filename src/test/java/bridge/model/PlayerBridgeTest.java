@@ -23,4 +23,18 @@ class PlayerBridgeTest {
         assertThat(currentUpShape).isEqualTo(List.of("O", " "));
         assertThat(currentDownShape).isEqualTo(List.of(" ", "X"));
     }
+
+    @Test
+    void 플레이어_다리_모양_초기화_기능() {
+        PlayerBridge playerBridge = new PlayerBridge();
+        playerBridge.addSuccessShape("U");
+        playerBridge.addFailureShape("D");
+        playerBridge.initializeShape();
+        Map<String, List<String>> currentShapes = playerBridge.getCurrentShapes();
+        List<String> currentUpShape = currentShapes.get("upShape");
+        List<String> currentDownShape = currentShapes.get("downShape");
+
+        assertThat(currentUpShape).isEmpty();
+        assertThat(currentDownShape).isEmpty();
+    }
 }

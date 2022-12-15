@@ -24,12 +24,18 @@ public class BridgeGame {
     private static final String DOWN_MOVING = "D";
 
     private int moveIndex;
+    private int tryNumber;
 
     public BridgeGame() {
         this.bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         this.playerBridge = new PlayerBridge();
         this.printBridge = new PrintBridge();
+        init();
+    }
+
+    private void init() {
         moveIndex = 0;
+        tryNumber = 0;
     }
 
     public void generateBridge(int bridgeSize) {
@@ -74,5 +80,8 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+        playerBridge.initializeShape();
+        moveIndex = 0;
+        tryNumber++;
     }
 }
