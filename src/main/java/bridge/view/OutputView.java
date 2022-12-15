@@ -39,6 +39,10 @@ public class OutputView {
     public void printResult() {
     }
 
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
+
     private void printBlankLine() {
         System.out.println();
     }
