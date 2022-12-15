@@ -1,9 +1,6 @@
 package bridge.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PlayerBridge {
 
@@ -44,6 +41,6 @@ public class PlayerBridge {
         Map<String, List<String>> currentShapeMap = new HashMap<>();
         currentShapeMap.put(UP_SHAPE_KEY, upShape);
         currentShapeMap.put(DOWN_SHAPE_KEY, downShape);
-        return currentShapeMap;
+        return Collections.unmodifiableMap(currentShapeMap);
     }
 }
