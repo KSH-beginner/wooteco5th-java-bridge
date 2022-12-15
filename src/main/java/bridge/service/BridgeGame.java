@@ -84,4 +84,8 @@ public class BridgeGame {
         moveIndex = 0;
         tryNumber++;
     }
+
+    public int getTryNumber() {
+        return this.tryNumber;
+    }
 }
