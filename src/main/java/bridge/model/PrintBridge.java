@@ -15,10 +15,10 @@ public class PrintBridge {
     private String upShape;
     private String downShape;
 
-    public Map<String, String> generate(List<String> playerBridgeUpShape, List<String> playerBridgeDownShape) {
+    public Map<String, String> generate(Map<String, List<String>> currentPlayerBridgeShape) {
         Map<String, String> convertedShapeMap = new HashMap<>();
-        upShape = convertToPrintShape(playerBridgeUpShape);
-        downShape = convertToPrintShape(playerBridgeDownShape);
+        upShape = convertToPrintShape(currentPlayerBridgeShape.get(UP_SHAPE_KEY));
+        downShape = convertToPrintShape(currentPlayerBridgeShape.get(DOWN_SHAPE_KEY));
         convertedShapeMap.put(UP_SHAPE_KEY, upShape);
         convertedShapeMap.put(DOWN_SHAPE_KEY, downShape);
         return convertedShapeMap;

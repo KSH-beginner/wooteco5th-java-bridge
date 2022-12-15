@@ -5,8 +5,10 @@ import bridge.BridgeRandomNumberGenerator;
 import bridge.GameStatus;
 import bridge.model.GeneratedBridge;
 import bridge.model.PlayerBridge;
+import bridge.model.PrintBridge;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -16,6 +18,7 @@ public class BridgeGame {
     private final BridgeMaker bridgeMaker;
     private GeneratedBridge generatedBridge;
     private final PlayerBridge playerBridge;
+    private final PrintBridge printBridge;
 
     private static final String UP_MOVING = "U";
     private static final String DOWN_MOVING = "D";
@@ -25,6 +28,7 @@ public class BridgeGame {
     public BridgeGame() {
         this.bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         this.playerBridge = new PlayerBridge();
+        this.printBridge = new PrintBridge();
         moveIndex = 0;
     }
 
@@ -57,6 +61,11 @@ public class BridgeGame {
             return GameStatus.FAILURE;
         }
         return GameStatus.PLAY;
+    }
+
+    public Map<String, String> generatePrintBridge() {
+        Map<String, List<String>> currentShapes = playerBridge.getCurrentShapes();
+        return printBridge.generate(currentShapes);
     }
 
     /**
