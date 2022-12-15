@@ -1,5 +1,5 @@
 package bridge;
 
 public enum GameStatus {
-    PLAY, SUCCESS, FAILURE;
+    PLAY, SUCCESS, FAILURE, RETRY;
 }
