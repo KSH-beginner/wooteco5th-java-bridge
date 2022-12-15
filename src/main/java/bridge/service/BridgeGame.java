@@ -20,9 +20,6 @@ public class BridgeGame {
     private final PlayerBridge playerBridge;
     private final PrintBridge printBridge;
 
-    private static final String UP_MOVING = "U";
-    private static final String DOWN_MOVING = "D";
-
     private int moveIndex;
     private int tryNumber;
 
@@ -35,7 +32,7 @@ public class BridgeGame {
 
     private void init() {
         moveIndex = 0;
-        tryNumber = 0;
+        tryNumber = 1;
     }
 
     public void generateBridge(int bridgeSize) {
@@ -48,23 +45,23 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void move(String moving) {
+    public GameStatus move(String moving) {
+        if (!generatedBridge.canMove(moveIndex, moving)) {
+            playerBridge.addFailureShape(moving);
+            return GameStatus.FAILURE;
+        }
         if (generatedBridge.canMove(moveIndex, moving)) {
             playerBridge.addSuccessShape(moving);
             moveIndex++;
+            return checkGameSuccess();
         }
-        if (!generatedBridge.canMove(moveIndex, moving)) {
-            playerBridge.addFailureShape(moving);
-        }
+        return GameStatus.PLAY;
     }
 
-    public GameStatus judgeGameStatus() {
+    private GameStatus checkGameSuccess() {
         int currentPlayerBridgeSize = moveIndex;
         if (generatedBridge.isSameSize(currentPlayerBridgeSize)) {
             return GameStatus.SUCCESS;
-        }
-        if (!generatedBridge.isSameSize(currentPlayerBridgeSize)) {
-            return GameStatus.FAILURE;
         }
         return GameStatus.PLAY;
     }
